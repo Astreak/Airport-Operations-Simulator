@@ -1,1 +1,2 @@
 1. npm init -y, creates with all the defaults
+2. install @types/express, @types/mongoose after normal installations

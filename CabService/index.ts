@@ -1,8 +1,9 @@
 import express from "express";
 import db from './src/config/db';
-import app  from "./src/router/app";
-var port = process.env.PORT || '5000';
-app.get('/', (req, res) => {
+import app from "./src/router/app";
+import { checkMiddle, anotherMiddle } from "./src/middlewares/mid1";
+var port = process.env.PORT || '5000'; 
+app.get('/', checkMiddle,anotherMiddle, (req, res) => { // executes one middleware after another and both have access to the reponse and request object;
     res.send('Hello, this is your Node.js server connected to MongoDB!');
 });
 app.get('/post',(req,res)=>{

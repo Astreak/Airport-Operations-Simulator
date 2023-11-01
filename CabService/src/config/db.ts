@@ -2,11 +2,6 @@ import mongoose from "mongoose";
 
 let Schema = mongoose.Schema;
 var newSchema = new Schema({
-    "empId":{
-        type:String,
-        required:true,
-        unique:true
-    },
     "firstName":{
         type:String,
         required:true
@@ -20,12 +15,12 @@ var newSchema = new Schema({
         unique:true
     },
     "isOccupied":{
-        type:String,
+        type:Boolean,
         required:false,
         default:false
     },
     "onRide":{
-        type:String,
+        type:Boolean,
         required:false,
         default:false
     }

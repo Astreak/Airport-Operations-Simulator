@@ -11,10 +11,10 @@ var anotherMiddle = (res: any, req: any, next: any) => {
 }
 var addDriverData = (res: any, req: any, next: any) => {
     let listDriver = [];
-    for (let i = 0; i < 10; i++){
+    for (let i = 100; i < 120; i++){
         listDriver.push({
             'firstName': 'ABC',
-            'lastName': 'XYZ',
+            'lastName': 'XYZ'+i.toString(),
             'cabId': i.toString(),
             'onRide': false,
             'isOccupied': false
@@ -30,4 +30,20 @@ var addDriverData = (res: any, req: any, next: any) => {
             console.log(err);
         });
 }
-export { checkMiddle, anotherMiddle, addDriverData };
+var deleteDrivers = async (req: any, res: any, next: any)=>{
+    const result = await db.deleteMany({ 'cabId': { $lt: 100 } });
+    console.log(result);
+    next();
+}
+var checkDriverStatus = async (req: any, res: any, next: any) => {
+    try {
+        let g = await db.findOne({ 'isOccupied': false })
+        res.locals.Id = g?._id;
+        next();
+    } catch {
+        res.locals.Id = null;
+        next();
+    }
+
+}
+export {checkDriverStatus};

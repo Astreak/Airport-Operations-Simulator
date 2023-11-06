@@ -14,7 +14,7 @@ router.put('/bookCab', checkDriverStatus, (req, res) => {
         res.send('No Drivers are available right now.');
         return;
     }
-    db.findByIdAndUpdate(res.locals.Id ,{onRide :true},{new: true}) // new: true returns the updated document
+    cabdb.findByIdAndUpdate(res.locals.Id ,{onRide :true},{new: true}) // new: true returns the updated document
         .then((d) => {
             console.log(d);
             res.send(`Cab with name ${d?.firstName} ${d?.lastName} with employee Id ${d?._id} is on the way`);

@@ -1,4 +1,4 @@
 CabService/node_modules/*
 CabServices/notes.txt
 CabService/*.env
-
+CabService/src/config/*

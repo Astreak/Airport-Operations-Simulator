@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import db from '../config/db';
-import { checkDriverStatus } from '../middlewares/mid1';
+import { checkDriverStatus, addDriverData } from '../middlewares/mid1';
 
 var router = Router();
 router.get('/', (req, res) => { // executes one middleware after another and both have access to the reponse and request object;
@@ -14,7 +14,7 @@ router.put('/bookCab', checkDriverStatus, (req, res) => {
         res.send('No Drivers are available right now.');
         return;
     }
-    db.findByIdAndUpdate(res.locals.Id ,{isOccupied :true},{new: true}) // new: true returns the updated document
+    db.findByIdAndUpdate(res.locals.Id ,{onRide :true},{new: true}) // new: true returns the updated document
         .then((d) => {
             console.log(d);
             res.send(`Cab with name ${d?.firstName} ${d?.lastName} with employee Id ${d?._id} is on the way`);
@@ -25,6 +25,7 @@ router.put('/bookCab', checkDriverStatus, (req, res) => {
         });
 });
 //OTP logic have to be implemented
+// from driver side
 router.put('/endRide', (req, res) => {
     
 });

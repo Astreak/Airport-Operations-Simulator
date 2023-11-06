@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-type experience = 'New' | 'Decent' | 'Profound';
 const Schema = mongoose.Schema;
 var driverInfo = new Schema({
     "id": {
@@ -27,7 +26,7 @@ var driverInfo = new Schema({
         unique: false
 
     },
-    "isOccupied":{
+    "isAvailable":{                           // drivers would should have a checkbox in portal to check if they are available
         type:Boolean,
         required:false,
         default:false
@@ -36,9 +35,38 @@ var driverInfo = new Schema({
         type:Boolean,
         required:false,
         default:false
+    },
+    "ride": {
+        type: [String, String],
+        required: false
+    },
+    "tripCost": {
+        type: Number,
+        required: false,
     }
 },{
     timestamps:true
 });
-const storeSchema = mongoose.model("NewSch",driverInfo);
-export default storeSchema;
+var rideInfo = new Schema({
+    'driverId': {
+        type: String,
+        required: true
+    },
+    'customerId': {
+        type: String,
+        required: true
+    },
+    "ride": {
+        type: [String, String],
+        required:true
+    },
+    "tripCost": {
+        type: Number,
+        required: true
+    }
+}, {
+    timestamps: true
+});
+const cabdb = mongoose.model("DriverInfo", driverInfo);
+const ridedb = mongoose.model("RiderInfo", rideInfo);
+export { cabdb, ridedb };

@@ -8,7 +8,7 @@ const to = "Park Street";
 const tripCost = 400;
 const driverId = 'XYZ1';
 var bookCabRouter = Router();
-bookCabRouter.get('/', addDriverData,(req, res) => { // executes one middleware after another and both have access to the reponse and request object;
+bookCabRouter.get('/',(req, res) => { // executes one middleware after another and both have access to the reponse and request object;
     res.send('Hello, this is the cab service REST API'); // w
 });
 /**

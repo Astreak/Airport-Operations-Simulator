@@ -18,7 +18,6 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(bookCabRouter);
 app.use(cancelRideRouter);
-// Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });

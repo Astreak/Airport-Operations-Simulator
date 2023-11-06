@@ -1,7 +1,11 @@
 import mongoose from "mongoose";
-
-let Schema = mongoose.Schema;
-var newSchema = new Schema({
+type experience = 'New' | 'Decent' | 'Profound';
+const Schema = mongoose.Schema;
+var driverInfo = new Schema({
+    "id": {
+        type: String,
+        required: false,
+    },
     "firstName":{
         type:String,
         required:true
@@ -13,6 +17,15 @@ var newSchema = new Schema({
     "cabId":{
         type:String,
         unique:true
+    },
+    "experience": {
+        type: String,
+        unique:false
+    },
+    "userRating": {
+        type: String,
+        unique: false
+
     },
     "isOccupied":{
         type:Boolean,
@@ -27,5 +40,5 @@ var newSchema = new Schema({
 },{
     timestamps:true
 });
-const storeSchema = mongoose.model("NewSch",newSchema);
+const storeSchema = mongoose.model("NewSch",driverInfo);
 export default storeSchema;

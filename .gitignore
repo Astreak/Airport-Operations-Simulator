@@ -2,5 +2,5 @@ CabService/node_modules/*
 Users/node_modules/*
 CabServices/notes.txt
 CabService/*.env
-./*.env
+Users/*.env
 CabService/src/config/db.ts

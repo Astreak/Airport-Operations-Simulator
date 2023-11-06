@@ -1,4 +1,4 @@
-import db from '../config/db';
+import { cabdb } from '../config/db';
 var checkMiddle = (res: any, req: any, next: any) => {
     console.log(res.body);
     let ok = 2;
@@ -23,7 +23,7 @@ var addDriverData = (res: any, req: any, next: any) => {
             "userRating" :ok
         });
     }
-    db.create(listDriver)
+    cabdb.create(listDriver)
         .then((d) => {
             //console.log(d);
             console.log('Driver data updated');
@@ -34,13 +34,13 @@ var addDriverData = (res: any, req: any, next: any) => {
         });
 }
 var deleteDrivers = async (req: any, res: any, next: any)=>{
-    const result = await db.deleteMany({ 'cabId': { $lt: 100 } });
+    const result = await cabdb.deleteMany({ 'cabId': { $lt: 100 } });
     console.log(result);
     next();
 }
 var checkDriverStatus = async (req: any, res: any, next: any) => {
     try {
-        let g = await db.findOne({ 'isAvailable': false })
+        let g = await cabdb.findOne({ 'isAvailable': false })
         res.locals.Id = g?._id;
         next();
     } catch {

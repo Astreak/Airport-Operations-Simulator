@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import db from '../config/db';
+import {cabdb, ridedb} from '../config/db';
 import { checkDriverStatus, addDriverData } from '../middlewares/mid1';
 
 var router = Router();

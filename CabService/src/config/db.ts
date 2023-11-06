@@ -43,6 +43,10 @@ var driverInfo = new Schema({
     "tripCost": {
         type: Number,
         required: false,
+    },
+    "currentRideId": {
+        type: String,
+        required:false
     }
 },{
     timestamps:true
@@ -63,6 +67,16 @@ var rideInfo = new Schema({
     "tripCost": {
         type: Number,
         required: true
+    },
+    "pickup": {
+        type: Boolean,
+        required: false,
+        default: false
+    },
+    "active": {
+        type: Boolean,
+        required: true,
+        default: false
     }
 }, {
     timestamps: true

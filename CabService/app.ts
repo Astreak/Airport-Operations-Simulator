@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import { router } from './src/router/route1';
+import { router } from './src/router/bookCab';
 const dbUri = process.env.CAB_DB_URI || 'None';
 const port = process.env.PORT || '5000';
 // CabDrivers Database 

@@ -15,7 +15,7 @@ const connectDB: Promise<void> = mongoose.connect(dbUri, {
     console.log(err);
 });
 var app = express();
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // helps to parse request body of type json
 app.use(bookCabRouter);
 app.use(cancelRideRouter);
 app.listen(port, () => {

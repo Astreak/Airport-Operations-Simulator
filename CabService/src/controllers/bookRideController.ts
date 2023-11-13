@@ -56,4 +56,35 @@ let pickupController = (req:any, res:any) => {
             res.send("Error");
         })
 } 
-export { bookRideController, pickupController };
+let endRide = (req: any, res: any): any => {
+    ridedb.findOne({ driverId: driverId, active: true, pickup: true })
+        .then((d) => {
+            if (d != null) {
+                d.active = false;
+                d?.save();
+                cabdb.findOne({id: driverId})
+                    .then((d) => {
+                        if (d != null) {
+                            d.onRide = false;
+                            d.save();
+                            res.status(201).send("The ride is has been completed");
+                        } else {
+                            res.status(404).send("You haven't  yet picked up the customer ");
+                            //return SuccessInfo.FAILURE;
+                        }
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        res.status(504).send("Server Error :)");
+                        //next();
+                    }); 
+            } else {
+                
+            }
+        })
+        .catch((e) => {
+            res.status(504).res.send("You haven't  yet picked up the customer ");
+        });
+     
+}
+export { bookRideController, pickupController, endRide };

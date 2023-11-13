@@ -5,7 +5,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-latest-brightgreen)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13.x-blue)
 
-Airport Management System is a comprehensive emulation of airport operations, ranging from cab services to Air Traffic Control (ATC). This project is implemented using Node.js and React.js, with MongoDB handling real-time status data retrieval and PostgreSQL managing the main user database.
+Airport Management System is a comprehensive microservice architecture is an expected emulation of airport operations, ranging from cab services to Air Traffic Control (ATC). This project is implemented using Node.js and React.js, with MongoDB handling real-time status data retrieval and PostgreSQL managing the main user database.
 
 ## Technologies Used
 

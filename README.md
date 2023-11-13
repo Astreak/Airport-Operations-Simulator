@@ -30,7 +30,7 @@ Airport Management System is a comprehensive emulation of airport operations, ra
     cd airport-management-system
     ```
 
-2. **Install Dependencies**:
+<!-- 2. **Install Dependencies**:
 
     ```bash
     cd frontend
@@ -49,11 +49,11 @@ Airport Management System is a comprehensive emulation of airport operations, ra
     # Start the backend
     cd ../backend
     npm start
-    ```
+    ``` -->
 
-4. **Open in Browser**:
+<!-- 4. **Open in Browser**:
 
-    Visit [http://localhost:3000](http://localhost:3000) to access the Airport Management System.
+    Visit [http://localhost:3000](http://localhost:3000) to access the Airport Management System. -->
 
 ## Contributing
 
@@ -61,7 +61,7 @@ We welcome contributions! If you find any issues or have ideas for improvements,
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+<!-- This project is licensed under the [MIT License](LICENSE). -->
 
 ---
 

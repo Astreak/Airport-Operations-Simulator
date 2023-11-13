@@ -1,24 +1,27 @@
 import express from 'express';
 import { cabdb, ridedb } from '../config/db';
+import { setDriverInactive, getDriverIdUserCancellation} from '../middlewares/deleteRideInfo';
 const userId = '6asdbasdxsadasXjasdnasd';
 const from = 'Sector V';
 const to = "Park Street";
 const tripCost = 400;
 const driverId = 'XYZ1';
-var cancelRideCab = (req:any, res:any) => {
+type cVoid = string | void;
+var cancelRideCab = async (req: any, res: any) => {
     // get the current driver ID and remove the hardcoded one
-    ridedb.findOne({ driverId: driverId, active: true })
-        .then((d) => {
-            if (d != null) {
-                d.pickup = true;
-                d?.save();
-                res.send("Driver have picked you up");
-            } else {
-                res.send("Something went wrong");
-            }
-        })
-        .catch((e) => {
-            res.send("Error");
-        })
+    let responseMessage:any = await setDriverInactive(driverId);
+    if (responseMessage == '0')
+        res.send(201, 'Your Ride has been cancelled');
+    else
+        res.send(504, 'Server Error :(');
 }
-export { cancelRideCab };
+var cancelRideUser = async (req: any, res: any) => {
+    let getDriverID: cVoid = await getDriverIdUserCancellation(userId);
+    let responseMessage:any = await setDriverInactive(driverId);
+    if (responseMessage == '0')
+        res.send(201, 'Your Ride has been cancelled');
+    else
+        res.send(504, 'Server Error :(');
+    
+}
+export { cancelRideCab, cancelRideUser };

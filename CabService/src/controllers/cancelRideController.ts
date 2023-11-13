@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { response } from 'express';
 import { cabdb, ridedb } from '../config/db';
 import { setDriverInactive, getDriverIdUserCancellation} from '../middlewares/deleteRideInfo';
 const userId = '6asdbasdxsadasXjasdnasd';
@@ -11,17 +11,18 @@ var cancelRideCab = async (req: any, res: any) => {
     // get the current driver ID and remove the hardcoded one
     let responseMessage:any = await setDriverInactive(driverId);
     if (responseMessage == '0')
-        res.send(201, 'Your Ride has been cancelled');
+        res.status(201).send('Your Ride has been cancelled');
     else
-        res.send(504, 'Server Error :(');
+        res.status(504).send('Server Error :(');
 }
 var cancelRideUser = async (req: any, res: any) => {
     let getDriverID: cVoid = await getDriverIdUserCancellation(userId);
-    let responseMessage:any = await setDriverInactive(driverId);
+    let responseMessage: string | void = await setDriverInactive(getDriverID);
+    console.log(responseMessage);
     if (responseMessage == '0')
-        res.send(201, 'Your Ride has been cancelled');
+        res.status(201).send('Your Ride has been cancelled');
     else
-        res.send(504, 'Server Error :(');
+        res.status(504).send('Server Error :(');
     
 }
 export { cancelRideCab, cancelRideUser };

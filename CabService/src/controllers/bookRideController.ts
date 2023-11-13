@@ -1,11 +1,6 @@
 import express from 'express';
 import { createRideInfo } from '../controllers/rideinfo';
 import { cabdb, ridedb } from '../config/db';
-const userId = '6asdbasdxsadasXjasdnasd';
-const from = 'Sector V';
-const to = "Park Street";
-const tripCost = 400;
-const driverId = 'XYZ1';
 let bookRideController =  (req:any, res:any) => { 
     var driverName: String = '';
     if (res.locals.Id === null) {                                           // response.locals can store state throughout the life of request
@@ -23,7 +18,7 @@ let bookRideController =  (req:any, res:any) => {
             res.send('[-] Error: Driver Not Found');
         })
         .then((driver) => {
-            let rideData = createRideInfo(driver?.id, userId, tripCost, from, to);
+            let rideData = createRideInfo(driver?.id, req.body.userId, req.body.tripCost, req.body.from, req.body.to);
             ridedb.create(rideData)
                 .then((d) => {
                     console.log('Ride Data created');
@@ -31,7 +26,7 @@ let bookRideController =  (req:any, res:any) => {
                         driver.currentRideId = d._id.toString();
                         driver?.save();
                         console.log('currentRideInfo Updated');
-                        res.send(`${driverName} is your driver, he would pick you up from ${from} to your destination to ${to}`);
+                        res.send(`${driverName} is your driver, he would pick you up from ${req.body.from} to your destination to ${req.body.to}`);
                     }
                 }).catch((e) => {
                     console.log('Error');
@@ -42,7 +37,7 @@ let bookRideController =  (req:any, res:any) => {
 }
 let pickupController = (req:any, res:any) => {
     // get the current driver ID and remove the hardcoded one
-    ridedb.findOne({ driverId: driverId, active: true })
+    ridedb.findOne({ driverId: req.body.driverId, active: true })
         .then((d) => {
             if (d != null) {
                 d.pickup = true;
@@ -57,12 +52,12 @@ let pickupController = (req:any, res:any) => {
         })
 } 
 let endRide = (req: any, res: any): any => {
-    ridedb.findOne({ driverId: driverId, active: true, pickup: true })
+    ridedb.findOne({ driverId: req.body.driverId, active: true, pickup: true })
         .then((d) => {
             if (d != null) {
                 d.active = false;
                 d?.save();
-                cabdb.findOne({id: driverId})
+                cabdb.findOne({id: req.body.driverId})
                     .then((d) => {
                         if (d != null) {
                             d.onRide = false;

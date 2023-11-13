@@ -6,7 +6,6 @@ const client = new Client({
 client.connect()
   .then(() => {
     console.log('[+] Connected to the PostgreSQL database.');
-    // You can start executing queries here.
   })
   .catch((err:any) => {
     console.error('Error connecting to the PostgreSQL database:', err);

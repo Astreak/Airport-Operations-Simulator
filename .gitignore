@@ -5,4 +5,4 @@ CabService/*.env
 Users/*.env
 CabService/src/config/*
 frontend-aos/node-modules/*
-frontend-aos/src/*
+frontend-aos/public/*

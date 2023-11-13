@@ -1,10 +1,5 @@
 import express from 'express';
 import { cabdb, ridedb } from '../config/db';
-const userId = '6asdbasdxsadasXjasdnasd';
-const from = 'Sector V';
-const to = "Park Street";
-const tripCost = 400;
-const driverId = 'XYZ1';
 // Make the current Driver activity setup to inactive
 enum SuccessInfo { SUCCESS = '0', FAILURE = '1' };
 let setDriverInactive = (driverId: string | void): Promise<string | void> | void => {

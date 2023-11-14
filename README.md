@@ -1,5 +1,4 @@
 # Airport Operations Simulator
-[![TypeScript](https://badges.frapsoft.com/typescript/code/typescript.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 ![Node.js](https://img.shields.io/badge/Node.js-14.x-green)
 ![React.js](https://img.shields.io/badge/React.js-17.x-blue)
 ![MongoDB](https://img.shields.io/badge/MongoDB-latest-brightgreen)

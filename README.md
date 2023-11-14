@@ -63,5 +63,3 @@ We welcome contributions! If you find any issues or have ideas for improvements,
 <!-- This project is licensed under the [MIT License](LICENSE). -->
 
 ---
-
-Feel free to update and customize this README to better fit your project's details and style. Good luck with your Airport Management System project!

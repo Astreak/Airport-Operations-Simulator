@@ -43,7 +43,7 @@ var userSignUpController = (req: any, res: any) => {
 var createDriverEmplymentDetails = (req: any, res: any) => {
     const role:string  = 'driver'; 
     const yoe: Number = req.body.yoe; 
-    const user_id: Number = req.body.user_id; // have to be handled from frontend;
+    const user_id: String = req.body.user_id; // have to be handled from frontend;
     client.query('INSERT INTO "my_schema"."EmploymentDetails" (role, yoe, user_id) VALUES($1, $2, $3)', [role,yoe,user_id])
             .then((d) => {
                 console.log('[+] EmployeeDetails Add');
@@ -61,7 +61,7 @@ var createDriverEmplymentDetails = (req: any, res: any) => {
 var createStaffEmplymentDetails = (req: any, res: any) => {
     const role:string  = 'staff'; 
     const yoe: Number = req.body.yoe; 
-    const user_id: Number = req.body.user_id; // have to be handled from frontend;
+    const user_id: String = req.body.user_id; // have to be handled from frontend;
     client.query('INSERT INTO "my_schema"."EmploymentDetails" (role, yoe, user_id) VALUES($1, $2, $3)', [role,yoe,user_id])
             .then((d) => {
                 console.log('[+] EmployeeDetails Add');
@@ -79,7 +79,7 @@ var createStaffEmplymentDetails = (req: any, res: any) => {
 var createAdminEmplymentDetails = (req: any, res: any) => {
     const role:string  = 'admin'; 
     const yoe: Number = req.body.yoe; 
-    const user_id: Number = req.body.user_id; // have to be handled from frontend;
+    const user_id: String = req.body.user_id; // have to be handled from frontend;
     client.query('INSERT INTO "my_schema"."EmploymentDetails" (role, yoe, user_id) VALUES($1, $2, $3)', [role,yoe,user_id])
             .then((d) => {
                 console.log('[+] EmployeeDetails Add');

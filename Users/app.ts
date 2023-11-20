@@ -3,6 +3,7 @@ import { Client } from 'pg';
 import "dotenv/config";
 import { signUpRouter } from './src/routes/userSignUp';
 import { signInRouter } from './src/routes/userSignIn';
+import { bookTicketRouter } from './src/routes/bookTickets';
 const port:string | undefined = process.env.PORT || '3000';
 const app = express();
 app.use(express.json());

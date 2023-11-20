@@ -1,5 +1,7 @@
 import { client } from "../config/ConnectDatabase";
 import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
+import Randomstring  from "randomstring";
 var userSignInController = (req: any, res: any) => {
     const username:string  = req.body.username;
     const password: string  = req.body.password;
@@ -17,7 +19,12 @@ var userSignInController = (req: any, res: any) => {
                         if (result == false) {
                             res.status(403).send({ "msg": "Wrong Password" });
                         } else {
-                            res.status(200).send({ "msg": "SUCCESS" });
+                            let randomS: string = Randomstring.generate(55);
+                            const token = jwt.sign({
+                                email: userData.email,
+                                username: userData.username
+                            }, randomS, { expiresIn: '1hr' });
+                            res.status(200).json({ token: token, userId: userData._id.toString() });
                         }
                     })
                     .catch((e) => {

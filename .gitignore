@@ -4,5 +4,6 @@ CabServices/notes.txt
 CabService/*.env
 Users/*.env
 CabService/src/config/*
+CabService/reqBody.json
 frontend-aos/node-modules/*
 frontend-aos/public/*

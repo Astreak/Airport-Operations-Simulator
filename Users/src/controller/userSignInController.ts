@@ -24,12 +24,11 @@ var userSignInController = (req: any, res: any) => {
                                 email: userData.email,
                                 username: userData.username
                             }, randomS, { expiresIn: '1hr' });
-                            res.status(200).json({ token: token, userId: userData._id.toString() });
+                            res.status(200).json({ token: token, userId: userData.username });
                         }
                     })
                     .catch((e) => {
                         console.log(e);
-
                     })
                 
             })

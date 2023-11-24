@@ -12,4 +12,7 @@ let checkUserAlreadyPresent = async (req: any, res: any, next: any) => {
     }
 
 }
-export { checkUserAlreadyPresent, client };
+let checkIfSeatsAvailable = async (req: any, res: any, next: any){
+    // middle ware code
+}
+export { checkUserAlreadyPresent, checkIfSeatsAvailable, client };

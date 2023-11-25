@@ -7,3 +7,5 @@ CabService/src/config/*
 CabService/reqBody.json
 frontend-aos/node-modules/*
 frontend-aos/public/*
+ATC/*.env
+ATC/node_modules/*

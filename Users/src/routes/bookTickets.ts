@@ -2,5 +2,5 @@ import express from 'express';
 import { client } from '../config/ConnectDatabase';
 import { checkIfSeatsAvailable } from '../middleware/checkUserValidity';
 const bookTicketRouter = express.Router();
-bookTicketRouter.post("/bookTickets",checkIfAvailable, );
+bookTicketRouter.post("/bookTickets",checkIfSeatsAvailable );
 export { bookTicketRouter };

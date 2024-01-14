@@ -1,4 +1,6 @@
-import { cabdb } from '../config/db';
+import { cabdb, ridedb } from '../config/db';
+import { Redis } from 'ioredis';
+const cacheServer = new Redis();
 var checkMiddle = (res: any, req: any, next: any) => {
     console.log(res.body);
     let ok = 2;
@@ -40,8 +42,21 @@ var deleteDrivers = async (req: any, res: any, next: any)=>{
 }
 var checkDriverStatus = async (req: any, res: any, next: any) => {
     try {
-        let g = await cabdb.findOne({ 'isAvailable': false })
-        res.locals.Id = g?._id;
+        // caching available drives for every location 
+        let ifDriverPresent: any, isDriverAvailable: any, g:any; 
+        ifDriverPresent = await cacheServer.get('driverData:1');;
+        if (ifDriverPresent) {
+            let driverData: any = cacheServer.blpop("driverData:1", 6000);
+            if (driverData != null || driverData != undefined) {
+                g = JSON.parse(driverData)[0];
+            } else {
+                g = null;
+            }
+        } else {
+            g = await cabdb.find({ 'isAvailable': false });
+        }
+        if (g != null) res.locals.Id = g?._id;
+        else res.locals.Id = null;
         next();
     } catch {
         res.locals.Id = null;

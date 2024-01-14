@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { checkDriverStatus, addDriverData } from '../middlewares/mid1';
+import { checkDriverStatus, addDriverData } from '../middlewares/helperBook';
 import { createRideInfo } from '../controllers/rideinfo';
 import { bookRideController, pickupController, endRide } from '../controllers/bookRideController';
 var bookCabRouter = Router();
